@@ -1,0 +1,24 @@
+#include <iostream>
+
+void deep(int &s) {
+   s = 4;
+}
+
+void shallow(int d) {
+   d = 5;
+}
+
+int main() {
+   int a = 3;
+   shallow(a);
+   std::cout << "shallow 후 a의 값: " << a << std::endl; 
+   deep(a);
+   std::cout << "deep 후 a의 값: " << a << std::endl; 
+   return 0;
+}
+
+이 코드의 결과 값은 
+shallow 후 a의 값:  3 
+deep 후 a의 값 : 4
+이유 shallow 는 만들어놓은 void shallow에 들어가서 바꾸어 주긴 하였으나 main에 있는 함수에는 영향을 주지 못하고 끝났다
+ deep 은 main의 함수의 주소값에 있는 것을 변환 시켰기에 main에 있는 함수의 변수가 변하였다.
