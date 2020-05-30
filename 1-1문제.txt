@@ -1,10 +1,10 @@
 #include <iostream>
 
-void deep(int &s) {
+void shallow(int &s) {
    s = 4;
 }
 
-void shallow(int d) {
+void deep(int d) {
    d = 5;
 }
 
@@ -18,7 +18,9 @@ int main() {
 }
 
 이 코드의 결과 값은 
-shallow 후 a의 값:  3 
+shallow 후 a의 값:  4
 deep 후 a의 값 : 4
-이유 shallow 는 만들어놓은 void shallow에 들어가서 바꾸어 주긴 하였으나 main에 있는 함수에는 영향을 주지 못하고 끝났다
- deep 은 main의 함수의 주소값에 있는 것을 변환 시켰기에 main에 있는 함수의 변수가 변하였다.
+ 
+&가 붙은 것을 Call-by-Reference라고 하는데 그 경우 a라는 함수를 shallow에 넣을때 &즉 주소값을 가지고 계산을 하기 때문에 a의 값이 변하였던 것 이고
+
+deep은 call-by-value 라고 하는듯 하다 이의 경우 int d는 a를 가져오는것이 아닌 a가 가진 숫자만을 복사해 가져오고 끝나기 때문에 main 에서의 변화가 없었던 것이다.
